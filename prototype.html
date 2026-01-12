@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EKAKI VILLA: CLASSIFIED ARCHIVE</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Grotesk:wght@300;500;700&family=Courier+Prime:wght@400;700&family=Inter:wght@300;500;800&family=Permanent+Marker&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#dc2626", // Alert Red
+                        "alien": "#00ff9d", // Night Vision Teal
+                        "void": "#020608", // Deepest Black/Teal
+                        "panel": "#0a1214", // UI Backgrounds
+                        "yt-red": "#ff0000",
+                    },
+                    fontFamily: {
+                        "title": ["Rubik Glitch", "cursive"],
+                        "ui": ["Space Grotesk", "sans-serif"],
+                        "mono": ["Courier Prime", "monospace"],
+                        "marker": ["Permanent Marker", "cursive"],
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.07%22/%3E%3C/svg%3E')",
+                    },
+                    animation: {
+                        'glitch': 'glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite',
+                        'blink': 'blink 2s ease-in-out infinite',
+                        'marquee': 'marquee 30s linear infinite',
+                        'fog': 'fog 20s linear infinite alternate',
+                        'ufo-pass': 'ufo-pass 25s linear infinite',
+                        'scan-vertical': 'scan-vertical 4s linear infinite',
+                        'scan-card': 'scan-card 2s linear infinite',
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'crash-shake': 'crash-shake 0.2s cubic-bezier(.36,.07,.19,.97) both infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'jitter': 'jitter 0.2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        glitch: {
+                            '0%': { transform: 'translate(0)' },
+                            '20%': { transform: 'translate(-2px, 2px)' },
+                            '40%': { transform: 'translate(-2px, -2px)' },
+                            '60%': { transform: 'translate(2px, 2px)' },
+                            '80%': { transform: 'translate(2px, -2px)' },
+                            '100%': { transform: 'translate(0)' },
+                        },
+                        blink: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.4' } },
+                        marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-100%)' } },
+                        fog: { '0%': { transform: 'translateX(-10%) opacity(0.3)' }, '100%': { transform: 'translateX(10%) opacity(0.6)' } },
+                        'ufo-pass': {
+                            '0%': { left: '-20%', top: '15%', transform: 'scale(0.8) rotate(-5deg)' },
+                            '50%': { left: '50%', top: '10%', transform: 'scale(1) rotate(0deg)' },
+                            '100%': { left: '120%', top: '20%', transform: 'scale(0.8) rotate(5deg)' }
+                        },
+                        'scan-vertical': {
+                            '0%': { height: '0%' },
+                            '50%': { height: '100%' },
+                            '51%': { height: '0%' },
+                            '100%': { height: '0%' }
+                        },
+                        'scan-card': {
+                            '0%': { top: '-100%', opacity: '0' }, '50%': { opacity: '1' }, '100%': { top: '200%', opacity: '0' }
+                        },
+                        'crash-shake': {
+                            '0%': { transform: 'translate(1px, 1px) rotate(0deg)' },
+                            '100%': { transform: 'translate(1px, -2px) rotate(-1deg)' }
+                        },
+                        'jitter': {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '25%': { transform: 'translateX(-2px)' },
+                            '75%': { transform: 'translateX(2px)' }
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020608;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ff9d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #020608;
+            cursor: crosshair;
+        }
+
+        /* CRT Scanlines */
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 50;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Glitch Text */
+        .glitch-text {
+            position: relative;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 #00ff9d;
+            clip-path: inset(44% 0 61% 0);
+            animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 #dc2626;
+            clip-path: inset(54% 0 10% 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip-path: inset(20% 0 80% 0);
+            }
+
+            100% {
+                clip-path: inset(30% 0 30% 0);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip-path: inset(10% 0 70% 0);
+            }
+
+            100% {
+                clip-path: inset(40% 0 40% 0);
+            }
+        }
+
+        /* Flashlight Cursor Effect */
+        #flashlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 40;
+            background: radial-gradient(circle 300px at var(--x, 50%) var(--y, 50%), transparent 0%, rgba(2, 6, 8, 0.85) 80%, rgba(2, 6, 8, 0.98) 100%);
+            mix-blend-mode: hard-light;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Holographic Card Effect */
+        .cast-card {
+            transition: all 0.3s ease;
+        }
+
+        .cast-card:hover .hologram-overlay {
+            opacity: 1;
+        }
+
+        .cast-card:hover .scan-line {
+            animation: scan-card 1.5s linear infinite;
+            opacity: 1;
+        }
+
+        /* Locked Button Pattern */
+        .locked-pattern {
+            background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.5) 10px, transparent 10px, transparent 20px);
+        }
+    </style>
+    <style>
+        /* Conspiracy Board & Generator CSS */
+        .corkboard-bg {
+            background-color: #3f2e22;
+            background-image: url("./assets/backgrounds/corkboard.png");
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transform: rotate(var(--rotation));
+            transition: all 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 20;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .handwritten {
+            font-family: 'Permanent Marker', cursive;
+            color: #d1d5db;
+        }
+
+        .red-string {
+            position: absolute;
+            height: 2px;
+            background: #ef4444;
+            opacity: 0.6;
+            transform-origin: 0 50%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Generator Modal */
+        #generator-modal {
+            backdrop-filter: blur(10px);
+        }
+
+        .stencil-font {
+            font-family: 'Black Ops One', cursive;
+            /* Fallback or load if needed */
+        }
+    </style>
+    <style>
+        /* UFO & Tuner CSS (From Entry 5) */
+        #abduction-ufo {
+            position: fixed;
+            top: -400px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 220;
+            /* Fixed: Above Landing Screen (z-200) */
+            pointer-events: none;
+            transition: top 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .ufo-body {
+            width: 280px;
+            height: 80px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .ufo-dome {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, rgba(200, 255, 255, 0.9), rgba(0, 200, 255, 0.4) 40%, rgba(0, 50, 100, 0.8) 90%);
+            border-radius: 50% 50% 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            z-index: 1;
+        }
+
+        .ufo-disc {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, #4a4a4a 0%, #2b2b2b 60%, #1a1a1a 100%);
+            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2), 0 10px 20px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .ufo-lights-ring {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            width: 90%;
+            height: 20px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .light-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff0033;
+            box-shadow: 0 0 10px #ff0033;
+            animation: blink-lights 0.5s infinite alternate;
+        }
+
+        .light-dot:nth-child(2) {
+            animation-delay: 0.1s;
+            background: #00ff41;
+            box-shadow: 0 0 10px #00ff41;
+        }
+
+        .light-dot:nth-child(3) {
+            animation-delay: 0.2s;
+            background: #0088ff;
+            box-shadow: 0 0 10px #0088ff;
+        }
+
+        .light-dot:nth-child(4) {
+            animation-delay: 0.3s;
+            background: #ffaa00;
+            box-shadow: 0 0 10px #ffaa00;
+        }
+
+        .ufo-engine {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: radial-gradient(circle, #fff 0%, #00ff41 30%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(2px);
+            z-index: 1;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .ufo-engine.active {
+            opacity: 1;
+            box-shadow: 0 0 30px #00ff41, 0 0 60px #00ff41;
+        }
+
+        .ufo-beam-container {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 120vh;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s;
+            clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+        }
+
+        .beam-light {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 65, 0.1) 20%, rgba(0, 255, 65, 0.4) 50%, rgba(0, 255, 65, 0.1) 80%, transparent 100%),
+                repeating-linear-gradient(0deg, transparent 0px, transparent 4px, rgba(0, 255, 65, 0.1) 5px, rgba(0, 255, 65, 0.1) 8px);
+            background-size: 100% 100%, 100% 20px;
+            mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+        }
+
+        .beam-active .beam-light {
+            animation: beam-flow 0.1s linear infinite;
+        }
+
+        .beam-core {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(to bottom, #fff, transparent);
+            filter: blur(4px);
+            opacity: 0.8;
+        }
+
+        @keyframes blink-lights {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes beam-flow {
+            0% {
+                backgroundPosition: 0 0;
+            }
+
+            100% {
+                backgroundPosition: 0 -20px;
+            }
+        }
+
+        @keyframes flash-in {
+            0% {
+                opacity: 0;
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        /* Tuner & Helpers */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 12px;
+            background: #333;
+            border: 1px solid #555;
+            margin-top: -10px;
+            cursor: crosshair;
+        }
+
+        input[type=range].active-tuner::-webkit-slider-thumb {
+            background: #00ff41;
+            box-shadow: 0 0 15px #00ff41, 0 0 30px #00ff41;
+            border-color: white;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border: 1px solid #333;
+        }
+
+        .hidden-opacity {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .animate-ufo-hover {
+            animation: ufo-hover 3s ease-in-out infinite;
+        }
+
+        @keyframes ufo-hover {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+        }
+
+        /* Mobile Lamp Animation */
+        #mobile-lamp-container {
+            transform-origin: top center;
+            will-change: transform;
+        }
+
+        @keyframes abduct-elements {
+            0% {
+                transform: scale(1) translateY(0);
+                filter: brightness(1) blur(0);
+            }
+
+            10% {
+                transform: scale(1.05) translateY(10px);
+                filter: brightness(2) contrast(1.5);
+            }
+
+            100% {
+                /* Move UP towards UFO (approx -40vh) while shrinking */
+                transform: scale(0) translateY(-45vh) rotate(720deg);
+                opacity: 0;
+                filter: brightness(0) blur(10px);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-300 font-ui overflow-x-hidden w-full max-w-[100vw] selection:bg-alien selection:text-black">
+
+    <!-- GLOBAL OVERLAYS -->
+    <div class="fixed inset-0 pointer-events-none z-[250] scanlines opacity-20"></div>
+    <div class="fixed inset-0 pointer-events-none z-[250] bg-noise opacity-30 mix-blend-overlay"></div>
+
+    <!-- LANDING SCREEN (Entry 5 Integration) -->
+    <div id="landing-screen" class="flex flex-col h-[100dvh] overflow-hidden fixed inset-0 z-[200] bg-black">
+        <div class="absolute inset-0 z-0 bg-cover bg-center"
+            style="background-image: url('./assets/backgrounds/villa.webp'); filter: brightness(0.3);">
+        </div>
+        <div class="absolute inset-0 z-10 bg-black/90 backdrop-blur-sm"></div>
+
+        <header id="landing-header"
+            class="hidden-opacity relative z-50 flex items-center justify-between px-6 py-4 border-b border-gray-800 transition-opacity duration-500">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+                <span class="text-red-600 font-mono text-xs tracking-[0.2em] font-bold">REC_LIVE // CAM_04</span>
+            </div>
+            <div class="text-xs font-mono text-gray-500">SYS_LOCKDOWN_INITIATED</div>
+        </header>
+
+        <main id="abduct-target" class="relative z-50 flex-1 flex flex-col items-center justify-center p-6 text-center">
+            <div id="reveal-text" class="hidden-opacity mb-8 flex flex-col items-center">
+                <h1 class="glitch-text text-6xl md:text-9xl font-title text-white mix-blend-screen opacity-90"
+                    data-text="THEY ARE HERE">THEY ARE HERE</h1>
+                <p
+                    class="font-mono text-alien text-sm tracking-widest mt-2 animate-pulse bg-black px-2 border border-alien">
+                    >> SIGNAL SOURCE IDENTIFIED <<< </p>
+            </div>
+
+            <div
+                class="w-full max-w-lg bg-black border border-gray-800 p-8 shadow-[0_0_50px_rgba(0,0,0,0.8)] relative z-50 rounded-sm">
+                <div class="absolute top-4 right-4 flex items-center gap-2">
+                    <span id="lock-text" class="text-[10px] text-gray-600 font-bold tracking-widest">SCANNING...</span>
+                    <div id="lock-light" class="w-2 h-2 bg-gray-800 rounded-full"></div>
+                </div>
+                <canvas id="noiseCanvas"
+                    class="w-full h-24 bg-black border border-gray-900 mb-6 opacity-40 rounded-sm"></canvas>
+                <label class="text-xs text-gray-500 font-mono mb-2 block text-left">FREQUENCY TUNER (MHz)</label>
+                <div class="relative w-full h-8 flex items-center">
+                    <div class="absolute left-[89%] w-[2%] h-full z-0 bg-gray-800/50"></div>
+                    <input type="range" min="0" max="100" value="10" class="relative z-10 w-full" id="tuner">
+                </div>
+                <div class="flex justify-between text-[10px] font-mono text-gray-600 mt-2">
+                    <span>00.0</span><span id="freq-display" class="text-gray-400">10.0 MHz</span><span>100.0</span>
+                </div>
+            </div>
+            <p id="hint-text" class="mt-12 text-gray-700 font-mono text-[10px] animate-pulse">// ADJUST FREQUENCY TO
+                INTERCEPT SIGNAL (TRY 90.0)</p>
+
+            <!-- PC EXPERIENCE WARNING -->
+            <p
+                class="mt-8 text-red-900/50 font-mono text-[9px] tracking-widest uppercase border border-red-900/20 px-3 py-1 rounded bg-black/50">
+                ⚠ FOR BEST EXPERIENCE USE LAPTOP/PC
+            </p>
+        </main>
+    </div>
+
+    <!-- UFO -->
+    <div id="abduction-ufo">
+        <div class="relative flex flex-col items-center animate-ufo-hover">
+            <div class="ufo-dome"></div>
+            <div class="ufo-body">
+                <div class="ufo-disc">
+                    <div class="ufo-lights-ring">
+                        <div class="light-dot"></div>
+                        <div class="light-dot"></div>
+                        <div class="light-dot"></div>
+                        <div class="light-dot"></div>
+                        <div class="light-dot"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ufo-engine" id="ufo-engine"></div>
+            <div class="ufo-beam-container" id="ufo-beam">
+                <div class="beam-light"></div>
+                <div class="beam-core"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div id="main-content" style="display: none;">
+        <!-- FLASHLIGHT EFFECT -->
+        <div id="flashlight"></div>
+
+        <!-- MOBILE SWINGING LAMP (Visible only on mobile via JS logic) -->
+        <div id="mobile-lamp-container"
+            class="md:hidden fixed top-0 left-1/2 -translate-x-1/2 z-[45] pointer-events-none opacity-0 transition-opacity duration-1000">
+            <div class="h-[15vh] w-0.5 bg-gray-800 mx-auto"></div>
+            <div
+                class="w-8 h-12 bg-black border border-gray-700 rounded-full -mt-1 relative flex items-end justify-center">
+                <div class="w-6 h-6 bg-[#ffeb3b] rounded-full blur-[2px] shadow-[0_0_20px_#ffeb3b] mb-1 opacity-80">
+                </div>
+            </div>
+        </div>
+
+        <!-- HEADER -->
+        <header
+            class="fixed top-0 left-0 right-0 z-[60] bg-[#0a1214]/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 text-primary animate-pulse">
+                    <span class="material-symbols-outlined text-sm">warning</span>
+                    <span class="text-xs font-bold tracking-[0.2em] uppercase">EKAKI VILLA ALERT</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 font-mono text-[10px] text-alien/80">
+                <div class="hidden md:flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-blink"></span>
+                    <span>REC_LIVE</span>
+                </div>
+                <span id="timecode">00:00:00:00</span>
+            </div>
+        </header>
+
+        <!-- SECTION 1: HERO -->
+        <section id="hero"
+            class="relative h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-void">
+            <div class="absolute inset-0 z-0 bg-cover bg-center opacity-60 filter contrast-125 brightness-[0.5] sepia-[0.2]"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHs1D4S-SZrHK342jA2jBmSqtFQLW7HIcjezODZVrFtIJV7kt5H7MQ_NmXknsCcZXwO7t8l9umW8rIeXrJlYFQ1eTvoQSfLpAW1PSUkVZHfe1CcIEi4I3elHfomfncwoJn5pnsNlCA0cMGKpblbczvNjACRlaM14Z5nOF8doQduEMc4RjKGtYiCqmM5_f5-u3ePSsZvmO5rHcP4VLumBA241nrh2d4ZSNDlla4NTVbzH9M792uQB72FHLVGQWp8_ee7YmU9ZnFEvBJ');">
+            </div>
+            <div
+                class="absolute inset-0 z-10 bg-[url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png')] bg-repeat-x bg-cover opacity-30 animate-fog mix-blend-soft-light">
+            </div>
+
+            <div
+                class="absolute top-[10%] w-64 h-16 bg-black rounded-[50%] animate-ufo-pass z-20 shadow-[0_20px_50px_rgba(0,0,0,1)] opacity-90 border-t border-white/5">
+                <div class="absolute bottom-2 w-full flex justify-center gap-8 px-6">
+                    <div class="w-2 h-2 bg-alien rounded-full animate-blink shadow-[0_0_15px_#00ff9d]"></div>
+                    <div
+                        class="w-3 h-3 bg-white rounded-full animate-blink animation-delay-200 shadow-[0_0_20px_white]">
+                    </div>
+                    <div
+                        class="w-2 h-2 bg-alien rounded-full animate-blink animation-delay-500 shadow-[0_0_15px_#00ff9d]">
+                    </div>
+                </div>
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 w-[1px] h-[50vh] bg-gradient-to-b from-alien/20 to-transparent blur-sm">
+                </div>
+            </div>
+
+            <!-- ACTOR GROUP (For Flashlight Reveal) -->
+            <div
+                class="absolute bottom-0 left-0 right-0 z-15 flex items-end justify-center pointer-events-none opacity-90 px-4 md:gap-0">
+                <!-- Sidhant -->
+                <img src="./SidhantSarfare.png"
+                    class="h-[18vh] md:h-[40vh] object-contain filter brightness-50 contrast-125 translate-y-6 md:translate-y-10">
+                <!-- Grishim -->
+                <img src="./GrishimNawani.png"
+                    class="h-[20vh] md:h-[42vh] object-contain filter brightness-50 contrast-125 translate-y-4 md:translate-y-8 -ml-6 md:-ml-12">
+                <!-- Rohit -->
+                <img src="./RohitSadhwani.png"
+                    class="h-[22vh] md:h-[45vh] object-contain filter brightness-50 contrast-125 translate-y-3 md:translate-y-6 -ml-6 md:-ml-12 relative z-10">
+                <!-- Ashish (Center) -->
+                <img src="./AshishChanchlani.png"
+                    class="h-[28vh] md:h-[55vh] object-contain filter brightness-75 contrast-125 z-20 -ml-6 md:-ml-12 drop-shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                <!-- Akash -->
+                <img src="./AkashDodeja.png"
+                    class="h-[24vh] md:h-[48vh] object-contain filter brightness-50 contrast-125 translate-y-2 md:translate-y-4 -ml-6 md:-ml-12 relative z-10">
+                <!-- Harsh -->
+                <img src="./HarshRane.png"
+                    class="h-[21vh] md:h-[44vh] object-contain filter brightness-50 contrast-125 translate-y-4 md:translate-y-8 -ml-6 md:-ml-12">
+                <!-- Shashank -->
+                <img src="./ShashankShekhar.png"
+                    class="h-[19vh] md:h-[41vh] object-contain filter brightness-50 contrast-125 translate-y-6 md:translate-y-10 -ml-6 md:-ml-12">
+            </div>
+
+            <div class="relative z-30 text-center flex flex-col items-center gap-6 max-w-5xl px-4 mt-[-10vh]">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/30 rounded text-primary text-[10px] font-mono font-bold tracking-[0.3em] uppercase backdrop-blur-sm">
+                    /// Threat Level: EXTREME ///
+                </div>
+                <h1 class="glitch-text text-6xl md:text-[10rem] font-title text-gray-100 leading-none tracking-tight drop-shadow-2xl mix-blend-overlay opacity-80"
+                    data-text="EKAKI">EKAKI</h1>
+                <p
+                    class="text-lg md:text-xl text-gray-400 max-w-lg font-ui font-light tracking-wide leading-relaxed mix-blend-plus-lighter">
+                    They are watching from the sky. <br>
+                    <span class="text-alien font-bold">The invasion has begun.</span>
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-5 w-full justify-center">
+                    <button onclick="document.getElementById('scan').scrollIntoView({behavior: 'smooth'})"
+                        class="group relative px-8 py-4 bg-alien/10 border border-alien/40 hover:bg-alien/20 transition-all w-full sm:w-auto overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-1 h-full bg-alien group-hover:w-full transition-all duration-500 opacity-10">
+                        </div>
+                        <span
+                            class="relative flex items-center justify-center gap-3 text-alien font-bold tracking-[0.2em] text-sm uppercase">
+                            <span class="material-symbols-outlined">radar</span>
+                            Scan Sector
+                        </span>
+                    </button>
+                    <button onclick="document.getElementById('episodes').scrollIntoView({behavior: 'smooth'})"
+                        class="px-8 py-4 border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-all font-bold text-sm tracking-[0.2em] uppercase flex items-center justify-center gap-3 w-full sm:w-auto bg-black/40 backdrop-blur-sm">
+                        <span class="material-symbols-outlined">folder_open</span>
+                        Mission Logs
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TICKER -->
+        <div
+            class="bg-primary/5 border-y border-primary/10 py-2 overflow-hidden whitespace-nowrap relative z-30 backdrop-blur-md">
+            <div class="animate-marquee inline-block w-full">
+                <p class="text-primary/90 text-[10px] font-mono font-bold tracking-[0.2em] uppercase">
+                    WARNING: UNIDENTIFIED AERIAL PHENOMENA CONFIRMED /// VILLA STRUCTURE COMPROMISED /// DO NOT ENTER
+                    THE
+                    FOG /// REPORT SIGHTINGS TO ACV HQ
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: VILLA SCAN (IMPROVED CREEPINESS) -->
+        <section id="scan" class="relative py-24 bg-[#010304] border-b border-white/5 overflow-hidden">
+            <!-- Creepy Pulse Background -->
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(220,38,38,0.05),transparent_60%)] animate-pulse-slow pointer-events-none">
+            </div>
+            <div class="absolute inset-0 bg-noise opacity-30 pointer-events-none mix-blend-overlay"></div>
+
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                <!-- Scan Visualization (Enhanced) -->
+                <div
+                    class="relative h-[600px] w-full border border-red-900/40 rounded overflow-hidden bg-black group shadow-[0_0_50px_rgba(220,38,38,0.1)] order-2 lg:order-1">
+                    <!-- Base Dark Image -->
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkzFfyJYGLoFluSemsQTM6Ws3dVlBIADdZMEh3OwpDxUMJEKPK_ALiXyyNtykMSw2biphv96_THJ9DQYEBn6-WuPyMxbV_vzu26KWhq2qwTspi2yDTTthtUzheKznnIDio3gT9ITM6hlGhc_6TvqpsKGIHyE9vcYwXUWGg9lZB-W7dBZSB0sAM_r2NTiNIL1EQnIUZvaD3OB8L0jiLRprlOijCH7erWCbDoYtjUFMll-hnX-gl7QNLtyZdL0duzxbjYbFdEiGL1gt1"
+                        class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale contrast-150 brightness-50">
+
+                    <!-- "Nightmare" Reveal Layer (Masked by animation) -->
+                    <div
+                        class="absolute inset-0 w-full animate-scan-vertical overflow-hidden border-b-2 border-alien shadow-[0_0_20px_#00ff9d] z-20 bg-alien/5 mix-blend-hard-light">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkzFfyJYGLoFluSemsQTM6Ws3dVlBIADdZMEh3OwpDxUMJEKPK_ALiXyyNtykMSw2biphv96_THJ9DQYEBn6-WuPyMxbV_vzu26KWhq2qwTspi2yDTTthtUzheKznnIDio3gT9ITM6hlGhc_6TvqpsKGIHyE9vcYwXUWGg9lZB-W7dBZSB0sAM_r2NTiNIL1EQnIUZvaD3OB8L0jiLRprlOijCH7erWCbDoYtjUFMll-hnX-gl7QNLtyZdL0duzxbjYbFdEiGL1gt1"
+                            class="w-full h-[600px] object-cover filter invert hue-rotate-90 contrast-200 saturate-200">
+                    </div>
+
+                    <!-- Overlay Grids & UI -->
+                    <div
+                        class="absolute inset-0 bg-[linear-gradient(rgba(0,255,157,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,157,0.03)_1px,transparent_1px)] bg-[size:30px_30px] z-10 pointer-events-none">
+                    </div>
+
+                    <div class="absolute top-6 left-6 flex flex-col gap-2 z-30">
+                        <div
+                            class="bg-red-900/80 text-white text-[10px] font-bold px-2 py-1 border-l-2 border-red-500 animate-pulse">
+                            ⚠ ANOMALY DETECTED
+                        </div>
+                        <div class="bg-black/50 text-alien text-[10px] font-mono px-2 py-1 border border-alien/30">
+                            CAM_EXT_04 // NIGHT_VIS
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Analysis (Creepier) -->
+                <div class="space-y-10 order-1 lg:order-2">
+                    <div>
+                        <div class="flex items-center gap-3 text-red-500 mb-4">
+                            <span class="material-symbols-outlined animate-ping text-sm">wifi_tethering_off</span>
+                            <span class="text-sm font-mono font-bold tracking-[0.2em] uppercase">Signal
+                                Intercepted</span>
+                        </div>
+                        <h2
+                            class="text-4xl md:text-6xl font-black leading-[0.9] text-white font-title tracking-tight mb-6">
+                            REALITY <span class="text-alien glitch-text" data-text="FAILURE">FAILURE</span>
+                        </h2>
+                        <p class="text-gray-400 font-mono text-sm leading-relaxed border-l-2 border-primary/40 pl-4">
+                            Thermal scans indicate the villa's geometry is shifting. The entities are not just invading;
+                            they are rewriting the laws of physics in EKAKI VILLA.
+                        </p>
+                    </div>
+
+                    <!-- Panic Meters -->
+                    <div class="bg-black/40 p-6 rounded border border-white/5 backdrop-blur-sm grid grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Reality
+                                Stability
+                            </h3>
+                            <div class="text-3xl font-mono text-red-600 font-bold mb-1">12%</div>
+                            <div class="w-full h-1 bg-gray-800 rounded overflow-hidden">
+                                <div class="h-full bg-red-600 w-[12%] animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Entity
+                                Manifestation</h3>
+                            <div class="text-3xl font-mono text-alien font-bold mb-1">HIGH</div>
+                            <div class="w-full h-1 bg-gray-800 rounded overflow-hidden">
+                                <div class="h-full bg-alien w-[85%] animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Waveform Visual -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-[10px] text-gray-500 font-mono uppercase">
+                            <span>Audio Feed: Panic Frequency</span>
+                            <span class="text-red-500 animate-blink">LIVE</span>
+                        </div>
+                        <div class="flex items-center justify-between h-8 gap-1 opacity-60">
+                            <div class="w-1 bg-red-500 h-full animate-jitter" style="animation-duration: 0.2s"></div>
+                            <div class="w-1 bg-red-500 h-[60%] animate-jitter" style="animation-duration: 0.3s"></div>
+                            <div class="w-1 bg-red-500 h-[90%] animate-jitter" style="animation-duration: 0.1s"></div>
+                            <div class="w-1 bg-red-500 h-[40%] animate-jitter" style="animation-duration: 0.4s"></div>
+                            <div class="w-1 bg-red-500 h-[70%] animate-jitter" style="animation-duration: 0.15s"></div>
+                            <div class="w-1 bg-red-500 h-[100%] animate-jitter" style="animation-duration: 0.25s"></div>
+                            <div class="w-1 bg-red-500 h-[50%] animate-jitter" style="animation-duration: 0.35s"></div>
+                            <div class="w-1 bg-red-500 h-[80%] animate-jitter" style="animation-duration: 0.12s"></div>
+                            <div class="w-1 bg-red-500 h-[30%] animate-jitter" style="animation-duration: 0.45s"></div>
+                            <div class="w-1 bg-red-500 h-[60%] animate-jitter" style="animation-duration: 0.22s"></div>
+                            <div class="w-1 bg-red-500 h-[90%] animate-jitter" style="animation-duration: 0.18s"></div>
+                            <div class="w-1 bg-red-500 h-[40%] animate-jitter" style="animation-duration: 0.38s"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MISSION LOGS (EPISODES 1-4) -->
+        <section id="episodes" class="relative py-24 corkboard-bg border-b border-white/5 overflow-hidden">
+            <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span
+                            class="bg-red-600 text-white px-2 py-1 font-mono text-xs tracking-widest uppercase mb-2 inline-block transform -rotate-2 shadow-sm">EVIDENCE
+                            BOARD</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white font-marker transform rotate-1">THE
+                            TIMELINE
+                        </h2>
+                    </div>
+                    <!-- Generator Button -->
+                    <button onclick="document.getElementById('generator-modal').classList.remove('hidden')"
+                        class="group relative px-6 py-3 bg-red-600 border border-red-500 text-white font-bold font-mono tracking-wider hover:bg-red-700 transition-all shadow-[0_5px_15px_rgba(220,38,38,0.4)] transform hover:scale-105 active:scale-95">
+                        <span class="flex items-center gap-2">
+                            <span class="material-symbols-outlined">person_search</span>
+                            REPORT A DISAPPEARANCE
+                        </span>
+                    </button>
+                </div>
+                <div class="relative min-h-[600px] flex flex-wrap justify-center gap-12 p-8">
+                    <!-- Red Strings (SVG) -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
+                        <line x1="20%" y1="30%" x2="50%" y2="50%" stroke="#ef4444" stroke-width="2" stroke-opacity="0.6"
+                            stroke-dasharray="5,5" />
+                        <line x1="50%" y1="50%" x2="80%" y2="40%" stroke="#ef4444" stroke-width="2"
+                            stroke-opacity="0.6" />
+                        <line x1="50%" y1="50%" x2="50%" y2="80%" stroke="#ef4444" stroke-width="2"
+                            stroke-opacity="0.6" />
+                    </svg>
+
+                    <!-- Ep 1 -->
+                    <a href="https://youtu.be/dB6sowSVcZw?si=kLUVvOPEu74GseLM" target="_blank"
+                        class="polaroid w-64 md:w-80 group relative z-10" style="--rotation: -3deg;">
+                        <div class="aspect-video bg-gray-900 relative mb-3 overflow-hidden">
+                            <img src="./Ekaki_Chapter_1_Presence.jpg"
+                                class="w-full h-full object-cover contrast-125 group-hover:scale-110 transition-all duration-500">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-white drop-shadow-lg">play_circle</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-marker text-black text-xl">"It started here..."</h3>
+                            <p class="font-mono text-[10px] text-gray-500 mt-1">LOG_01: PRESENCE</p>
+                        </div>
+                    </a>
+
+                    <!-- Ep 2 -->
+                    <a href="https://youtu.be/jhBAUzoXj_A?si=a2GuyzbbqSlVd1cG" target="_blank"
+                        class="polaroid w-64 md:w-80 group relative z-10 top-20" style="--rotation: 4deg;">
+                        <div class="aspect-video bg-gray-900 relative mb-3 overflow-hidden">
+                            <img src="./Ekaki_Chapter_2_Arrival.jpg"
+                                class="w-full h-full object-cover contrast-125 group-hover:scale-110 transition-all duration-500">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-white drop-shadow-lg">play_circle</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-marker text-black text-xl">"They arrived at night"</h3>
+                            <p class="font-mono text-[10px] text-gray-500 mt-1">LOG_02: ARRIVAL</p>
+                        </div>
+                    </a>
+
+                    <!-- Sticky Note Center -->
+                    <div
+                        class="w-48 h-48 bg-yellow-200 shadow-lg transform rotate-2 p-4 flex items-center justify-center text-center z-20 top-10 relative">
+                        <p class="font-marker text-black text-sm leading-tight">
+                            THE SYMBOLS MATCH THE CROP CIRCLES FROM '04!!
+                            <span class="block mt-2 text-red-600 font-bold">DO NOT TRUST THEM.</span>
+                        </p>
+                    </div>
+
+                    <!-- Ep 3 -->
+                    <a href="https://youtu.be/iPCWamt3XME?si=tk8icABI4NBUzFt1" target="_blank"
+                        class="polaroid w-64 md:w-80 group relative z-10" style="--rotation: -2deg;">
+                        <div class="aspect-video bg-gray-900 relative mb-3 overflow-hidden">
+                            <img src="./Ekaki_Chapter_3_Invasion.jpg"
+                                class="w-full h-full object-cover contrast-125 group-hover:scale-110 transition-all duration-500">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-white drop-shadow-lg">play_circle</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-marker text-black text-xl">"We are not safe"</h3>
+                            <p class="font-mono text-[10px] text-gray-500 mt-1">LOG_03: INVASION</p>
+                        </div>
+                    </a>
+
+                    <!-- Ep 4 -->
+                    <a href="https://youtu.be/DDryy8xMuac?si=UVf206r3gUNCrjUc" target="_blank"
+                        class="polaroid w-64 md:w-80 group relative z-10 top-24" style="--rotation: 5deg;">
+                        <div class="aspect-video bg-gray-900 relative mb-3 overflow-hidden">
+                            <img src="./Ekaki_Chapter_4_Skyfall.jpg"
+                                class="w-full h-full object-cover contrast-125 group-hover:scale-110 transition-all duration-500">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-white drop-shadow-lg">play_circle</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-marker text-black text-xl">"Only one escaped"</h3>
+                            <p class="font-mono text-[10px] text-gray-500 mt-1">LOG_04: SKYFALL</p>
+                        </div>
+                    </a>
+
+                    <!-- Ep 5 (Placeholder) -->
+                    <div class="polaroid w-64 md:w-80 group relative z-10 top-10 grayscale opacity-80"
+                        style="--rotation: -1deg;">
+                        <div
+                            class="aspect-video bg-black relative mb-3 overflow-hidden flex items-center justify-center border-2 border-dashed border-gray-400">
+                            <span class="text-gray-400 font-mono text-xs text-center">FILE
+                                CORRUPTED<br>DECRYPTING...</span>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-marker text-red-600 text-xl">"CONQUER"</h3>
+                            <p class="font-mono text-[10px] text-gray-500 mt-1">LOG_05: [LOCKED]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 3.5: THE FINALE COUNTDOWN (NEW DEDICATED SECTION) -->
+        <section id="finale" class="relative py-32 bg-black border-y border-primary/20 overflow-hidden">
+            <div class="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent animate-pulse-slow">
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+                <div
+                    class="inline-flex items-center gap-3 px-4 py-1 border border-primary text-primary text-xs font-mono font-bold tracking-[0.3em] uppercase mb-8">
+                    <span class="w-2 h-2 bg-primary rounded-full animate-blink"></span>
+                    LIVE SIGNAL INTERCEPT
+                </div>
+
+                <h2 class="text-6xl md:text-8xl font-black text-white font-title tracking-tighter mb-4 glitch-text"
+                    data-text="THE FINALE">
+                    THE FINALE
+                </h2>
+                <p class="text-gray-500 font-mono text-sm tracking-widest uppercase mb-12">Transmission Decryption in
+                    Progress...</p>
+
+                <div
+                    class="border-2 border-primary/30 bg-black/50 backdrop-blur-md p-8 md:p-12 relative overflow-hidden group">
+                    <!-- Background Glitch for Box -->
+                    <div class="absolute inset-0 bg-scanlines opacity-10"></div>
+
+                    <div id="countdown"
+                        class="text-5xl md:text-8xl font-mono font-bold text-white tracking-widest text-shadow-red mb-8">
+                        --:--:--
+                    </div>
+
+                    <button id="finaleBtn" disabled
+                        class="w-full md:w-auto px-12 py-4 bg-gray-900 border border-gray-700 text-gray-500 font-bold tracking-[0.2em] uppercase transition-all duration-300 cursor-not-allowed">
+                        <span class="flex items-center gap-3 justify-center">
+                            <span class="material-symbols-outlined text-sm">lock</span>
+                            ACCESS DENIED
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE CAST (ENHANCED) -->
+        <section id="cast" class="relative py-24 bg-void border-b border-white/5 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white font-title tracking-wide mb-2">
+                            EKAKI VILLA <span class="text-primary">MISSING</span>
+                        </h2>
+                        <p class="text-gray-500 font-mono tracking-widest text-xs uppercase">Case File: 77-X /// No
+                            Survivors Found</p>
+                    </div>
+                    <div
+                        class="flex items-center gap-3 text-gray-500 font-mono text-[10px] border border-white/10 px-4 py-2 bg-black/40 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                        7 SUBJECTS IDENTIFIED
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card Template: Holographic Scan -->
+                    <!-- 1. Ashish -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div class="aspect-square bg-gray-900 mb-4 overflow-hidden relative">
+                            <img src="./AshishChanchlani.png"
+                                class="w-full h-full object-cover contrast-125 opacity-100 transition-all">
+                            <!-- Hologram Overlay -->
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">ASHISH C.</h3>
+                            <span class="text-[10px] font-mono text-primary border border-primary px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The Leader</p>
+                    </div>
+
+                    <!-- 2. Akash -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div class="aspect-square bg-gray-900 mb-4 overflow-hidden relative">
+                            <img src="./AkashDodeja.png"
+                                class="w-full h-full object-cover contrast-125 opacity-100 transition-all">
+                            <!-- Hologram Overlay -->
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">AKASH D.</h3>
+                            <span class="text-[10px] font-mono text-primary border border-primary px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The Skeptic</p>
+                    </div>
+
+                    <!-- 3. Grishim -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div class="aspect-square bg-gray-900 mb-4 overflow-hidden relative">
+                            <img src="./GrishimNawani.png"
+                                class="w-full h-full object-cover contrast-125 opacity-100 transition-all">
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">GRISHIM N.</h3>
+                            <span class="text-[10px] font-mono text-gray-500 border border-gray-500 px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The Tactician</p>
+                    </div>
+
+                    <!-- 4. Harsh -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div class="aspect-square bg-gray-900 mb-4 overflow-hidden relative">
+                            <img src="./HarshRane.png"
+                                class="w-full h-full object-cover filter contrast-150 opacity-70 group-hover:opacity-100 transition-all">
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">HARSH R.</h3>
+                            <span class="text-[10px] font-mono text-primary border border-primary px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The Chor Soldier</p>
+                    </div>
+
+                    <!-- 5. Rohit -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div
+                            class="aspect-square bg-gray-800 mb-4 flex items-center justify-center relative overflow-hidden">
+                            <img src="./RohitSadhwani.png"
+                                class="w-full h-full object-cover contrast-125 opacity-100 transition-all">
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">ROHIT S.</h3>
+                            <span class="text-[10px] font-mono text-primary border border-primary px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The Scout</p>
+                    </div>
+
+                    <!-- 6. Shashank -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div
+                            class="aspect-square bg-gray-800 mb-4 flex items-center justify-center relative overflow-hidden">
+                            <img src="./ShashankShekhar.png"
+                                class="w-full h-full object-cover contrast-125 opacity-100 transition-all">
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">SHASHANK S.</h3>
+                            <span class="text-[10px] font-mono text-primary border border-primary px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The GHAR Specialist</p>
+                    </div>
+
+                    <!-- 7. Sidhant -->
+                    <div class="cast-card bg-[#050a0c] border border-white/10 p-4 relative overflow-hidden group">
+                        <div
+                            class="aspect-square bg-gray-800 mb-4 flex items-center justify-center relative overflow-hidden">
+                            <img src="./SidhantSarfare.png"
+                                class="w-full h-full object-cover contrast-125 opacity-100 transition-all">
+                            <div
+                                class="hologram-overlay absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,157,0.1)_50%)] bg-[length:100%_4px] opacity-0 transition-opacity duration-300 pointer-events-none">
+                            </div>
+                            <div
+                                class="scan-line absolute top-0 left-0 w-full h-1 bg-alien shadow-[0_0_10px_#00ff9d] opacity-0 pointer-events-none">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white text-lg font-ui tracking-wide">SIDHANT S.</h3>
+                            <span class="text-[10px] font-mono text-primary border border-primary px-1">MISSING</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Role: The HEAVY Driver</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLIPBOOK STORY SECTION -->
+        <section id="story-scroll" class="relative h-[300vh] md:h-[500vh] bg-black" style="touch-action: pan-y;">
+            <div class="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center">
+
+                <!-- Canvas -->
+                <canvas id="flipbook-canvas"
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-1000"></canvas>
+
+                <!-- Loading State -->
+                <div id="flipbook-loader"
+                    class="absolute inset-0 flex flex-col items-center justify-center bg-black z-20">
+                    <div class="w-16 h-16 border-4 border-gray-800 border-t-alien rounded-full animate-spin"></div>
+                    <p class="mt-4 font-mono text-alien text-xs tracking-widest animate-pulse">DECRYPTING DATA STREAM...
+                    </p>
+                    <p id="load-progress" class="mt-2 font-mono text-gray-500 text-[10px]">0%</p>
+                </div>
+
+                <!-- Story Overlays (Absolute positioning over canvas) -->
+                <div id="story-overlay"
+                    class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+                    <h2 class="hidden-opacity text-5xl md:text-8xl font-title text-white glitch-text text-center mix-blend-difference"
+                        data-text="THE TRUTH WAS ALWAYS HERE">THE TRUTH WAS ALWAYS HERE</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER: CRASH SITE (IMPROVED) -->
+        <footer class="relative py-32 bg-black border-t-4 border-primary/20 overflow-hidden animate-crash-shake">
+            <!-- Background Effects -->
+            <div
+                class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cracked-glass.png')] opacity-30 pointer-events-none mix-blend-overlay">
+            </div>
+            <div class="absolute inset-0 bg-noise opacity-60 mix-blend-color-dodge animate-pulse"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-red-900/20 to-transparent pointer-events-none"></div>
+
+            <!-- Central Crash Visual -->
+            <div class="max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+
+                <!-- Glitching Youtube Icon -->
+                <div class="relative mb-12 group">
+                    <div
+                        class="absolute inset-0 bg-red-600 blur-[60px] opacity-20 group-hover:opacity-50 transition-opacity animate-pulse">
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-9xl text-[#ff0000] relative z-10 animate-glitch transform group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_30px_rgba(255,0,0,0.8)]">smart_display</span>
+                    <div class="absolute top-1/2 -left-20 w-40 h-1 bg-red-600/50 rotate-[-15deg] animate-ping"></div>
+                    <div
+                        class="absolute top-1/2 -right-20 w-40 h-1 bg-red-600/50 rotate-[15deg] animate-ping animation-delay-200">
+                    </div>
+                </div>
+
+                <h2 class="text-6xl md:text-8xl font-black text-white font-title tracking-tighter mb-4 glitch-text animate-pulse"
+                    data-text="FATAL ERROR">
+                    FATAL ERROR
+                </h2>
+
+                <!-- Terminal Output -->
+                <div
+                    class="bg-black/90 border border-red-600 p-6 rounded max-w-2xl w-full backdrop-blur-md relative overflow-hidden shadow-[0_0_30px_rgba(220,38,38,0.3)] mb-12">
+                    <div class="font-mono text-left text-xs md:text-sm space-y-1" id="terminal-output">
+                        <p class="text-red-500">>> SYSTEM FAILURE: CRITICAL DAMAGE DETECTED</p>
+                        <p class="text-gray-500">>> ATTEMPTING TO RE-ESTABLISH CONNECTION...</p>
+                        <p class="text-red-500">>> CONNECTION REFUSED BY HOST.</p>
+                        <p class="text-alien typing-effect">>> TRACING SIGNAL SOURCE: ASHISH CHANCHLANI VINES...</p>
+                        <p class="text-yellow-500 mt-4 border-t border-white/10 pt-2">>> ARCHITECT IDENTITY: REVEALED
+                        </p>
+                        <p class="text-white">>> USER: <span class="font-bold text-alien">KRISHNA SINGH</span></p>
+                        <p class="text-gray-500">>> ROLE: SYSTEM ARCHITECT // LEAD DEVELOPER</p>
+                    </div>
+                    <div class="absolute inset-0 bg-scanlines opacity-10 pointer-events-none"></div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="flex flex-col items-center gap-6">
+                    <p class="text-red-500 font-ui text-sm tracking-[0.3em] uppercase animate-blink font-bold">///
+                        MANUAL
+                        OVERRIDE REQUIRED ///</p>
+
+                    <a href="https://www.youtube.com/@ashishchanchlanivines" target="_blank"
+                        class="group relative px-12 py-6 bg-red-600/10 border-2 border-red-600 hover:bg-red-600 transition-all duration-100 overflow-hidden rounded shadow-[0_0_20px_rgba(220,38,38,0.4)]">
+                        <div
+                            class="absolute inset-0 bg-red-600/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        </div>
+                        <span
+                            class="relative flex items-center gap-4 font-bold text-xl text-red-500 tracking-widest font-ui group-hover:text-black transition-colors">
+                            <span class="material-symbols-outlined animate-spin-slow">settings_backup_restore</span>
+                            RECOVER CHANNEL DATA
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Credits Footer -->
+                <div
+                    class="mt-24 pt-8 border-t border-red-900/30 w-full flex flex-col md:flex-row justify-between items-center text-[10px] text-red-700 font-mono uppercase tracking-widest gap-4">
+                    <p>SYS_ID: CRASH_SITE_07</p>
+                    <!-- Architect Credit -->
+                    <div class="flex items-center gap-2 group cursor-help">
+                        <span class="material-symbols-outlined text-sm text-alien group-hover:animate-spin">code</span>
+                        <span>DESIGNED & CODED BY <span
+                                class="text-alien font-bold ml-1 group-hover:text-white transition-colors">KRISHNA
+                                SINGH</span></span>
+
+                        <!-- Socials -->
+                        <div class="flex items-center gap-3 ml-4 border-l border-red-900/50 pl-4">
+                            <a href="https://github.com/MrDunky14" target="_blank"
+                                class="text-gray-500 hover:text-white transition-colors flex items-center gap-1 group/social">
+                                <span class="text-xs">[</span> <span class="group-hover/social:text-alien">GITHUB</span>
+                                <span class="text-xs">]</span>
+                            </a>
+                            <a href="https://www.instagram.com/krishhnaa.03/" target="_blank"
+                                class="text-gray-500 hover:text-white transition-colors flex items-center gap-1 group/social">
+                                <span class="text-xs">[</span> <span
+                                    class="group-hover/social:text-pink-500">INSTAGRAM</span> <span
+                                    class="text-xs">]</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- System Status -->
+                    <p class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600 rounded-full animate-blink"></span>
+                        SYSTEM OFFLINE
+                    </p>
+                    <p>© ACV STUDIOS 2026</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- SCRIPTS -->
+        <script>
+            // Update Timecode
+            function updateTimecode() {
+                const now = new Date();
+                const ms = String(Math.floor(now.getMilliseconds() / 10)).padStart(2, '0');
+                const time = now.toLocaleTimeString('en-US', { hour12: false }) + ':' + ms;
+                document.getElementById('timecode').textContent = time;
+                requestAnimationFrame(updateTimecode);
+            }
+            updateTimecode();
+
+            // Flashlight Logic & Sync with Lamp
+            const flashlight = document.getElementById('flashlight');
+            const mobileLamp = document.getElementById('mobile-lamp-container');
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+            if (isMobile) {
+                // Enable Auto-Swinging Lamp
+                if (mobileLamp) mobileLamp.classList.remove('opacity-0');
+
+                let angle = 0;
+                let swingSpeed = 0.003;
+
+                function animateSwing(timestamp) {
+                    const time = timestamp * swingSpeed;
+
+                    // Pendulum Physics Simulation
+                    // Max angle approx 30 degrees (0.52 rad)
+                    const maxAngle = 0.52;
+                    const currentAngle = Math.sin(time) * maxAngle;
+
+                    // Update Visual Lamp
+                    if (mobileLamp) {
+                        mobileLamp.style.transform = `translateX(-50%) rotate(${currentAngle}rad)`;
+                    }
+
+                    // Update Flashlight Position (Projected onto "floor")
+                    // Center X + sin component. Y follows an arc slightly.
+                    const centerX = window.innerWidth / 2;
+                    const ropeLength = window.innerHeight * 0.6; // Virtual throw dist
+
+                    const x = centerX + (Math.sin(currentAngle) * ropeLength);
+                    const y = (window.innerHeight * 0.5) + (Math.abs(currentAngle) * 50); // Dip slightly at sides
+
+                    flashlight.style.setProperty('--x', x + 'px');
+                    flashlight.style.setProperty('--y', y + 'px');
+
+                    requestAnimationFrame(animateSwing);
+                }
+                requestAnimationFrame(animateSwing);
+
+            } else {
+                // Desktop Mouse Tracking
+                document.addEventListener('mousemove', (e) => {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    flashlight.style.setProperty('--x', x + 'px');
+                    flashlight.style.setProperty('--y', y + 'px');
+                });
+            }
+
+            // Disable Flashlight on Flipbook
+            const storySection = document.getElementById('story-scroll');
+            if (storySection) {
+                storySection.addEventListener('mouseenter', () => flashlight.style.opacity = '0');
+                storySection.addEventListener('mouseleave', () => flashlight.style.opacity = '1');
+            }
+
+            // Finale Countdown Logic
+            const finaleDate = new Date('2026-01-22T00:00:00'); // Set to Jan 22, 2026
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = finaleDate - now;
+
+                if (distance < 0) {
+                    // Unlock
+                    document.getElementById('countdown').textContent = "00:00:00";
+                    const btn = document.getElementById('finaleBtn');
+                    btn.disabled = false;
+                    btn.innerHTML = `
+                    <span class="flex items-center gap-3 justify-center">
+                        <span class="material-symbols-outlined text-sm">lock_open</span>
+                        ACCESS GRANTED
+                    </span>
+                `;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed', 'text-gray-500', 'border-gray-700', 'bg-gray-900');
+                    btn.classList.add('bg-primary', 'text-black', 'border-primary', 'animate-pulse');
+                    btn.onclick = () => window.open('https://www.youtube.com/@ashishchanchlanivines', '_blank');
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').textContent =
+                    (days < 10 ? "0" + days : days) + ":" +
+                    (hours < 10 ? "0" + hours : hours) + ":" +
+                    (minutes < 10 ? "0" + minutes : minutes) + ":" +
+                    (seconds < 10 ? "0" + seconds : seconds);
+            }
+            setInterval(updateCountdown, 1000);
+        </script>
+        <!-- Missing Person Generator Modal -->
+        <div id="generator-modal" class="fixed inset-0 z-[100] bg-black/80 hidden flex items-center justify-center p-4">
+            <div
+                class="bg-[#050a0c] border border-alien/50 w-full max-w-lg relative rounded-lg overflow-hidden shadow-[0_0_50px_rgba(0,255,157,0.1)]">
+                <!-- Header -->
+                <div class="bg-alien/10 px-6 py-4 border-b border-alien/20 flex justify-between items-center">
+                    <h3 class="text-alien font-mono font-bold tracking-widest uppercase">/// GENERATE MISSING POSTER
+                    </h3>
+                    <button onclick="document.getElementById('generator-modal').classList.add('hidden')"
+                        class="text-alien hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <!-- Content -->
+                <div class="p-6 space-y-6">
+                    <!-- Upload Area -->
+                    <div class="border-2 border-dashed border-gray-700 hover:border-alien transition-colors rounded-lg p-8 text-center cursor-pointer relative group"
+                        id="drop-zone">
+                        <input type="file" id="photo-upload" accept="image/*"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                            onchange="handleImageUpload(event)">
+                        <div class="space-y-2 pointer-events-none">
+                            <span
+                                class="material-symbols-outlined text-4xl text-gray-500 group-hover:text-alien transition-colors">add_a_photo</span>
+                            <p class="text-sm text-gray-400 font-mono">UPLOAD SELFIE (JPG/PNG)</p>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Preview -->
+                    <div class="hidden" id="preview-area">
+                        <canvas id="poster-canvas" class="w-full h-auto border border-white/10 shadow-xl"></canvas>
+                        <button onclick="downloadPoster()"
+                            class="mt-4 w-full py-3 bg-alien text-black font-bold font-mono tracking-widest uppercase hover:bg-white transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">download</span>
+                            DOWNLOAD POSTER
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generator Script -->
+        <script>
+            const canvas = document.getElementById('poster-canvas');
+            const ctx = canvas.getContext('2d');
+            let uploadedImage = new Image();
+
+            function handleImageUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    uploadedImage.onload = function () {
+                        processImage();
+                        document.getElementById('drop-zone').classList.add('hidden');
+                        document.getElementById('preview-area').classList.remove('hidden');
+                    };
+                    uploadedImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function processImage() {
+                // Set canvas dimensions (Square for Instagram)
+                canvas.width = 1080;
+                canvas.height = 1080;
+
+                // 1. Draw Base Image (Cover)
+                // Calculate aspect ratio to crop/fit
+                const scale = Math.max(canvas.width / uploadedImage.width, canvas.height / uploadedImage.height);
+                const x = (canvas.width / 2) - (uploadedImage.width / 2) * scale;
+                const y = (canvas.height / 2) - (uploadedImage.height / 2) * scale;
+
+                ctx.drawImage(uploadedImage, x, y, uploadedImage.width * scale, uploadedImage.height * scale);
+
+                // 2. Apply Night Vision Filter (Green Tint + Contrast)
+                ctx.globalCompositeOperation = 'multiply';
+                ctx.fillStyle = 'rgba(0, 255, 157, 0.4)'; // Alien green tint
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.globalCompositeOperation = 'source-over'; // Reset
+
+                // 3. Scanlines Overlay
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                for (let i = 0; i < canvas.height; i += 4) {
+                    ctx.fillRect(0, i, canvas.width, 2);
+                }
+
+                // 4. Vignette
+                const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 300, canvas.width / 2, canvas.height / 2, 800);
+                gradient.addColorStop(0, 'rgba(0,0,0,0)');
+                gradient.addColorStop(1, 'rgba(0,0,0,0.8)');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // 5. Overlays (Text & Stamps)
+
+                // "MISSING" Stamp
+                ctx.save();
+                ctx.translate(canvas.width - 350, 200);
+                ctx.rotate(15 * Math.PI / 180);
+                ctx.strokeStyle = '#dc2626'; // Primary Red
+                ctx.lineWidth = 15;
+                ctx.strokeRect(-200, -80, 400, 160);
+
+                ctx.font = 'bold 120px "Courier New"'; // Fallback
+                ctx.fillStyle = '#dc2626';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('MISSING', 0, 10);
+                ctx.restore();
+
+                // "CASE FILE" Text
+                ctx.font = '40px "Courier New"';
+                ctx.fillStyle = '#00ff9d';
+                ctx.textAlign = 'left';
+                ctx.fillText('CASE FILE: 77-X-' + Math.floor(Math.random() * 9000 + 1000), 50, 80);
+                ctx.fillText('STATUS: UNKNOWN', 50, 130);
+                ctx.fillText('LAST SEEN: EKAKI VILLA', 50, 180);
+
+                // ACV Logo / watermark
+                ctx.font = '30px "Arial"';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.textAlign = 'center';
+                ctx.fillText('VISIT ACV STUDIOS // EKAKI', canvas.width / 2, canvas.height - 50);
+            }
+
+            function downloadPoster() {
+                const link = document.createElement('a');
+                link.download = 'MISSING_POSTER.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
+        </script>
+
+    </div> <!-- END MAIN CONTENT WRAPPER -->
+
+    <!-- AUDIO LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <!-- INTEGRATED LOGIC SCRIPT -->
+    <script>
+        // --- LANDING PAGE LOGIC ---
+        const tuner = document.getElementById('tuner');
+        const noiseCanvas = document.getElementById('noiseCanvas');
+        const ctxNoise = noiseCanvas.getContext('2d');
+        const lockText = document.getElementById('lock-text');
+        const lockLight = document.getElementById('lock-light');
+        const freqDisplay = document.getElementById('freq-display');
+        const revealText = document.getElementById('reveal-text');
+        const landingHeader = document.getElementById('landing-header');
+        const abductTarget = document.getElementById('abduct-target');
+        const hintText = document.getElementById('hint-text');
+        const ufo = document.getElementById('abduction-ufo');
+        const ufoBeam = document.getElementById('ufo-beam');
+        const ufoEngine = document.getElementById('ufo-engine');
+        const landingScreen = document.getElementById('landing-screen');
+        const mainContent = document.getElementById('main-content');
+
+        let abductionTimer = null;
+        let isAbducted = false;
+
+        // 1. Noise Visualizer
+        function drawNoise() {
+            if (isAbducted) return;
+            const w = noiseCanvas.width = noiseCanvas.clientWidth;
+            const h = noiseCanvas.height = noiseCanvas.clientHeight;
+            ctxNoise.fillStyle = '#050505';
+            ctxNoise.fillRect(0, 0, w, h);
+
+            const val = parseInt(tuner.value);
+            const dist = Math.abs(val - 90);
+            const density = (100 - dist) / 100;
+
+            for (let i = 0; i < w * h * 0.2; i++) {
+                const alpha = Math.random() * density;
+                ctxNoise.fillStyle = dist < 2 ? `rgba(0, 255, 65, ${alpha})` : `rgba(255, 255, 255, ${alpha * 0.2})`;
+                ctxNoise.fillRect(Math.random() * w, Math.random() * h, 1, 1);
+            }
+            requestAnimationFrame(drawNoise);
+        }
+        drawNoise();
+
+        // 2. Tuner Logic
+        tuner.addEventListener('input', (e) => {
+            if (isAbducted) return;
+            const val = parseInt(e.target.value);
+            freqDisplay.innerText = val.toFixed(1) + ' MHz';
+
+            if (val >= 89 && val <= 91) {
+                if (!abductionTimer) {
+                    tuner.classList.add('active-tuner');
+                    lockText.innerText = "SIGNAL LOCKED - HOLD";
+                    lockText.className = "text-[10px] font-bold text-signal animate-pulse";
+                    lockLight.className = "w-2 h-2 bg-alien rounded-full shadow-[0_0_10px_#00ff9d]";
+
+                    revealText.classList.remove('hidden-opacity');
+                    revealText.style.animation = 'flash-in 0.2s forwards';
+                    landingHeader.classList.remove('hidden-opacity');
+                    hintText.style.opacity = '0';
+
+                    abductionTimer = setTimeout(startAbductionSequence, 2000);
+                }
+            } else {
+                if (abductionTimer) {
+                    clearTimeout(abductionTimer);
+                    abductionTimer = null;
+                    tuner.classList.remove('active-tuner');
+                    lockText.innerText = "SIGNAL LOST";
+                    lockText.className = "text-[10px] font-bold text-red-600";
+                    lockLight.className = "w-2 h-2 bg-red-800 rounded-full";
+                    revealText.classList.add('hidden-opacity');
+                    landingHeader.classList.add('hidden-opacity');
+                    hintText.style.opacity = '1';
+                }
+            }
+        });
+
+        // 3. Abduction Sequence
+        function startAbductionSequence() {
+            isAbducted = true;
+            lockText.innerText = "UPLINK ESTABLISHED";
+
+            // UFO Drops
+            ufo.style.top = '10%';
+
+            setTimeout(() => {
+                // Engine & Beam
+                ufoEngine.classList.add('active');
+                ufoBeam.style.opacity = '1';
+                ufoBeam.classList.add('beam-active');
+
+                // Suck Elements
+                abductTarget.style.animation = 'abduct-elements 3s forwards ease-in';
+                landingHeader.style.opacity = '0';
+
+                // Darkness & Reveal
+                setTimeout(() => {
+                    landingScreen.style.backgroundColor = 'black';
+                    abductTarget.style.display = 'none';
+                    ufo.style.top = '-500px';
+                    ufoBeam.style.opacity = '0';
+
+                    setTimeout(() => {
+                        landingScreen.style.display = 'none'; // Remove landing
+                        mainContent.style.display = 'block';  // Show Site
+                        window.scrollTo(0, 0);
+
+                        // Start Audio
+                        initAudio();
+                    }, 1000);
+                }, 2800);
+            }, 1500);
+        }
+
+        // --- AUDIO ENGINE (Binaural) ---
+        function initAudio() {
+            // Placeholder Paths - User must replace these
+            const soundAmbience = new Howl({
+                src: ['./sounds/forest_ambience.mp3'], // PLACEHOLDER
+                loop: true,
+                volume: 0.0, // Fade in
+                autoplay: false
+            });
+            const soundHum = new Howl({
+                src: ['./sounds/electric_hum.mp3'], // PLACEHOLDER
+                loop: true,
+                volume: 0.0
+            });
+
+            // Start playing
+            soundAmbience.play();
+            soundAmbience.fade(0, 0.4, 3000);
+            soundHum.play();
+            soundHum.fade(0, 0.2, 5000);
+
+            // Scroll Logic for Panning
+            window.addEventListener('scroll', () => {
+                const h = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = window.scrollY / h;
+
+                // Pan Ambience: Left to Right (-0.8 to 0.8)
+                soundAmbience.stereo((pct * 1.6) - 0.8);
+
+                // Hum gets louder as you go down (climb into the "machine")
+                soundHum.volume(0.2 + (pct * 0.4));
+            });
+
+            // Jumpscare Timer
+            setInterval(() => {
+                if (Math.random() > 0.85) { // 15% chance every check
+                    const whisper = new Howl({
+                        src: ['./sounds/whisper.mp3'], // PLACEHOLDER
+                        volume: 0.8,
+                        stereo: (Math.random() * 0.4) - 0.2 // Near center
+                    });
+                    if (window.scrollY > 500) { // Only if scrolled a bit
+                        whisper.play();
+                        console.log("Jumpscare triggered");
+                    }
+                }
+            }, 15000); // Check every 15s
+        }
+    </script>
+    <!-- FLIPBOOK LOGIC -->
+    <script>
+        class CanvasFlipbook {
+            constructor(totalFrames, folderPath, imagePrefix, imageExtension, canvasId, loaderId, scrollSectionId) {
+                this.totalFrames = totalFrames;
+                this.folderPath = folderPath;
+                this.imagePrefix = imagePrefix;
+                this.imageExtension = imageExtension;
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.loader = document.getElementById(loaderId);
+                this.scrollSection = document.getElementById(scrollSectionId);
+                this.progressBar = document.getElementById('load-progress');
+                this.overlay = document.querySelector('#story-overlay h2');
+
+                this.images = [];
+                this.imagesLoaded = 0;
+                this.currentFrame = 0;
+
+                this.init();
+            }
+
+            init() {
+                this.preloadImages();
+                this.resizeCanvas();
+                window.addEventListener('resize', () => this.resizeCanvas());
+                window.addEventListener('scroll', () => this.handleScroll());
+            }
+
+            preloadImages() {
+                for (let i = 1; i <= this.totalFrames; i++) {
+                    const img = new Image();
+                    const frameStr = String(i).padStart(4, '0');
+                    img.src = `${this.folderPath}/${this.imagePrefix}${frameStr}.${this.imageExtension}`;
+
+                    img.onload = () => {
+                        this.images[i] = img;
+                        this.imagesLoaded++;
+                        const pct = Math.round((this.imagesLoaded / this.totalFrames) * 100);
+                        this.progressBar.innerText = `${pct}%`;
+
+                        if (this.imagesLoaded === this.totalFrames) {
+                            this.onLoadComplete();
+                        }
+                    };
+                }
+            }
+
+            onLoadComplete() {
+                this.loader.style.opacity = '0';
+                setTimeout(() => {
+                    this.loader.style.display = 'none';
+                    this.canvas.style.opacity = '1';
+                    this.drawFrame(1);
+                }, 500);
+            }
+
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                this.drawFrame(this.currentFrame || 1);
+            }
+
+            drawFrame(frameIndex) {
+                const img = this.images[frameIndex];
+                if (!img) return;
+
+                this.currentFrame = frameIndex;
+
+                // "Cover" Fit Logic
+                const canvasRatio = this.canvas.width / this.canvas.height;
+                const imgRatio = img.width / img.height;
+                let drawWidth, drawHeight, offsetX, offsetY;
+
+                if (canvasRatio > imgRatio) {
+                    drawWidth = this.canvas.width;
+                    drawHeight = this.canvas.width / imgRatio;
+                    offsetX = 0;
+                    offsetY = (this.canvas.height - drawHeight) / 2;
+                } else {
+                    drawWidth = this.canvas.height * imgRatio;
+                    drawHeight = this.canvas.height;
+                    offsetX = (this.canvas.width - drawWidth) / 2;
+                    offsetY = 0;
+                }
+
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+
+                // Overlay Logic (Example Story Points)
+                if (frameIndex > 50 && frameIndex < 150) {
+                    this.overlay.classList.remove('hidden-opacity');
+                    this.overlay.innerText = "THEY WATCHED US";
+                } else if (frameIndex > 200 && frameIndex < 300) {
+                    this.overlay.classList.remove('hidden-opacity');
+                    this.overlay.innerText = "FROM THE SHADOWS";
+                } else {
+                    this.overlay.classList.add('hidden-opacity');
+                }
+            }
+
+            handleScroll() {
+                const rect = this.scrollSection.getBoundingClientRect();
+                const start = rect.top;
+                const end = rect.bottom - window.innerHeight;
+                const totalHeight = rect.height - window.innerHeight;
+
+                // Calculate progress (0 to 1) when section is in view
+                let progress = 0;
+                if (start < 0) {
+                    progress = Math.abs(start) / totalHeight;
+                }
+
+                // Clamp 0-1
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Map to Frame
+                const frameIndex = Math.floor(progress * (this.totalFrames - 1)) + 1;
+
+                if (this.imagesLoaded === this.totalFrames) {
+                    requestAnimationFrame(() => this.drawFrame(frameIndex));
+                }
+            }
+        }
+
+        // Initialize Flipbook
+        // Folder: ./assets/, Prefix: frame_, Ext: webp, Frames: 450
+        const myFlipbook = new CanvasFlipbook(450, './assets', 'frame_', 'webp', 'flipbook-canvas', 'flipbook-loader', 'story-scroll');
+    </script>
+</body>
+
+</html>
