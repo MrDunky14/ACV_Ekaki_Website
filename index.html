@@ -48,7 +48,6 @@
                         'scan-vertical': 'scan-vertical 4s linear infinite',
                         'scan-card': 'scan-card 2s linear infinite',
                         'typing': 'typing 3.5s steps(40, end)',
-                        'crash-shake': 'crash-shake 0.2s cubic-bezier(.36,.07,.19,.97) both infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'jitter': 'jitter 0.2s ease-in-out infinite',
                     },
@@ -77,10 +76,6 @@
                         },
                         'scan-card': {
                             '0%': { top: '-100%', opacity: '0' }, '50%': { opacity: '1' }, '100%': { top: '200%', opacity: '0' }
-                        },
-                        'crash-shake': {
-                            '0%': { transform: 'translate(1px, 1px) rotate(0deg)' },
-                            '100%': { transform: 'translate(1px, -2px) rotate(-1deg)' }
                         },
                         'jitter': {
                             '0%, 100%': { transform: 'translateX(0)' },
@@ -1213,7 +1208,7 @@
         </section>
 
         <!-- FOOTER: CRASH SITE (IMPROVED) -->
-        <footer class="relative py-32 bg-black border-t-4 border-primary/20 overflow-hidden animate-crash-shake">
+        <footer class="relative py-32 bg-black border-t-4 border-primary/20 overflow-hidden">
             <!-- Background Effects -->
             <div
                 class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cracked-glass.png')] opacity-30 pointer-events-none mix-blend-overlay">
